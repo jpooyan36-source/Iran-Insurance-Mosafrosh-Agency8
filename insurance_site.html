@@ -1,89 +1,535 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>نمایندگی بیمه ایران مسفروش</title>
-  <style>
-    body {
-      margin:0;
-      font-family: sans-serif;
-      background:#1f2d23 url('https://i.imgur.com/2c8mF9f.jpeg');
-      background-size: cover;
-      color:white;
-    }
-    header {
-      background:rgba(0,0,0,0.6);
-      padding:20px;
-      text-align:center;
-    }
-    .logo {
-      width:120px; margin:auto; display:block;
-    }
-    .container {
-      max-width:900px;
-      margin:40px auto;
-      background:rgba(0,0,0,0.5);
-      padding:30px;
-      border-radius:16px;
-      backdrop-filter: blur(5px);
-    }
-    h1, h2 {color:#8df5a2;}
-    .btn {
-      display:inline-block;
-      background:#0d5c2f;
-      color:white;
-      padding:12px 22px;
-      border-radius:8px;
-      text-decoration:none;
-      margin-top:10px;
-    }
-    footer {
-      text-align:center;
-      margin:40px 0;
-      opacity:0.7;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بیمه ایران — نمایندگی مسفروش | بیمه عمر</title>
+<meta name="description" content="نمایندگی رسمی بیمه ایران در کاشان — مشاوره تخصصی و صدور بیمه عمر، سرمایه‌گذاری بلندمدت، امنیت و آرامش خانواده.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-dark:#0B2B26;
+    --bg-dark-2:#123832;
+    --gold:#C99A3E;
+    --gold-soft:#E3C381;
+    --mint:#BFDCD1;
+    --cream:#F5F1E8;
+    --charcoal:#17201D;
+    --line:rgba(201,154,62,.35);
+    --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Vazirmatn',sans-serif;
+    background:var(--cream);
+    color:var(--charcoal);
+    line-height:1.9;
+    overflow-x:hidden;
+  }
+  .num{font-family:'Fraunces',serif;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;right:0;left:0;z-index:100;
+    padding:20px 0;
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  header.scrolled{
+    background:rgba(11,43,38,.92);
+    backdrop-filter:blur(8px);
+    padding:12px 0;
+    box-shadow:0 6px 24px rgba(0,0,0,.15);
+  }
+  header .container{display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--cream);font-size:1.05rem;}
+  .brand-mark{
+    width:38px;height:38px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, var(--gold-soft), var(--gold) 70%);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:600;color:var(--bg-dark);flex-shrink:0;
+  }
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav a{color:var(--mint);font-size:.95rem;font-weight:500;position:relative;padding:4px 0;}
+  nav a::after{
+    content:'';position:absolute;bottom:0;right:0;width:0;height:1px;background:var(--gold);
+    transition:width .3s ease;
+  }
+  nav a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--gold);color:var(--bg-dark)!important;
+    padding:9px 20px;border-radius:30px;font-weight:600;font-size:.9rem;
+  }
+  .nav-cta::after{display:none;}
+  .menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:radial-gradient(120% 100% at 20% 0%, var(--bg-dark-2), var(--bg-dark) 60%);
+    color:var(--cream);
+    padding:170px 0 120px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .container{position:relative;z-index:2;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--gold-soft);font-size:.85rem;letter-spacing:.04em;
+    border:1px solid var(--line);padding:6px 16px;border-radius:30px;
+    margin-bottom:28px;
+  }
+  .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  h1{
+    font-size:clamp(2.1rem,5vw,3.6rem);
+    font-weight:800;
+    max-width:14ch;
+    margin-bottom:24px;
+  }
+  h1 span{color:var(--gold-soft);}
+  .hero p.lead{
+    max-width:46ch;color:var(--mint);font-size:1.1rem;margin-bottom:40px;
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 30px;border-radius:30px;font-weight:600;font-size:.98rem;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{background:var(--gold);color:var(--bg-dark);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(201,154,62,.35);}
+  .btn-ghost{border:1px solid var(--line);color:var(--cream);}
+  .btn-ghost:hover{background:rgba(255,255,255,.06);}
+
+  /* signature animated line */
+  .signature{margin-top:70px;position:relative;height:120px;}
+  .signature svg{width:100%;height:100%;display:block;}
+  .signature path{
+    fill:none;stroke:var(--gold);stroke-width:2.5;
+    stroke-dasharray:1400;stroke-dashoffset:1400;
+    animation:draw 2.6s ease forwards .4s;
+  }
+  .signature circle{opacity:0;animation:pop .5s ease forwards;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @keyframes pop{to{opacity:1;}}
+  .sig-labels{display:flex;justify-content:space-between;margin-top:10px;color:var(--mint);font-size:.78rem;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:110px 0;}
+  .section-tag{
+    color:var(--bg-dark-2);font-size:.85rem;font-weight:600;letter-spacing:.05em;
+    display:flex;align-items:center;gap:10px;margin-bottom:16px;
+  }
+  .section-tag::before{content:'';width:26px;height:1px;background:var(--gold);}
+  .section h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;max-width:20ch;margin-bottom:18px;}
+  .section p.desc{max-width:60ch;color:#4b5852;font-size:1.02rem;}
+
+  /* ---------- ABOUT (asymmetric) ---------- */
+  .about{background:var(--cream);}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start;margin-top:60px;}
+  .about-card{
+    background:var(--bg-dark);color:var(--cream);border-radius:var(--radius);
+    padding:40px;position:relative;overflow:hidden;
+  }
+  .about-card::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 90% 10%, rgba(201,154,62,.25), transparent 60%);
+  }
+  .about-card h3{font-size:1.3rem;margin-bottom:14px;position:relative;}
+  .about-card p{color:var(--mint);position:relative;font-size:.98rem;}
+  .agent-row{display:flex;align-items:center;gap:16px;margin-top:28px;position:relative;}
+  .agent-avatar{
+    width:56px;height:56px;border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-soft),var(--gold));
+    display:flex;align-items:center;justify-content:center;color:var(--bg-dark);font-family:'Fraunces',serif;font-weight:600;
+  }
+  .agent-row .name{font-weight:700;}
+  .agent-row .role{color:var(--mint);font-size:.85rem;}
+  .points{display:flex;flex-direction:column;gap:26px;}
+  .point{display:flex;gap:16px;}
+  .point-icon{
+    width:42px;height:42px;border-radius:12px;background:var(--bg-dark);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;color:var(--gold-soft);font-size:1.1rem;
+  }
+  .point h4{font-size:1.02rem;margin-bottom:4px;}
+  .point p{color:#556058;font-size:.94rem;}
+
+  /* ---------- BENEFITS ---------- */
+  .benefits{background:var(--bg-dark);color:var(--cream);}
+  .benefits .section-tag{color:var(--gold-soft);}
+  .benefits .section-tag::before{background:var(--gold-soft);}
+  .benefits p.desc{color:var(--mint);}
+  .benefit-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;
+  }
+  .benefit-grid .card:nth-child(2){transform:translateY(28px);}
+  .benefit-grid .card:nth-child(4){transform:translateY(14px);}
+  .card{
+    background:var(--bg-dark-2);border:1px solid rgba(255,255,255,.06);
+    border-radius:var(--radius);padding:32px 26px;
+    transition:transform .35s ease, border-color .35s ease;
+  }
+  .card:hover{border-color:var(--line);}
+  .card .num{color:var(--gold-soft);font-size:1.6rem;display:block;margin-bottom:16px;}
+  .card h4{font-size:1.05rem;margin-bottom:10px;}
+  .card p{color:var(--mint);font-size:.92rem;}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- PROCESS ---------- */
+  .process{background:var(--cream);}
+  .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:70px;position:relative;
+  }
+  .steps::before{
+    content:'';position:absolute;top:23px;right:12.5%;left:12.5%;height:1px;
+    background:repeating-linear-gradient(to left, var(--gold) 0 8px, transparent 8px 16px);
+  }
+  .step{text-align:center;padding:0 14px;position:relative;}
+  .step-num{
+    width:46px;height:46px;border-radius:50%;background:var(--cream);border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 22px;
+    font-family:'Fraunces',serif;font-weight:600;color:var(--bg-dark-2);position:relative;z-index:2;
+  }
+  .step h4{font-size:1rem;margin-bottom:8px;}
+  .step p{font-size:.88rem;color:#556058;}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--cream);}
+  .faq-list{margin-top:50px;border-top:1px solid #ddd4c2;}
+  .faq-item{border-bottom:1px solid #ddd4c2;}
+  .faq-q{
+    width:100%;text-align:right;background:none;border:none;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:26px 4px;font-family:'Vazirmatn';font-size:1.02rem;font-weight:600;
+    cursor:pointer;color:var(--charcoal);
+  }
+  .faq-icon{
+    width:26px;height:26px;border-radius:50%;border:1px solid var(--gold);
+    position:relative;flex-shrink:0;transition:transform .3s ease;
+  }
+  .faq-icon::before,.faq-icon::after{
+    content:'';position:absolute;background:var(--gold);top:50%;left:50%;transform:translate(-50%,-50%);
+  }
+  .faq-icon::before{width:10px;height:1.5px;}
+  .faq-icon::after{width:1.5px;height:10px;transition:opacity .3s ease;}
+  .faq-item.open .faq-icon::after{opacity:0;}
+  .faq-item.open .faq-icon{transform:rotate(180deg);}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .4s ease;
+    color:#556058;font-size:.95rem;
+  }
+  .faq-a-inner{padding:0 4px 26px;max-width:65ch;}
+  .faq-item.open .faq-a{max-height:200px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--bg-dark);color:var(--cream);position:relative;overflow:hidden;}
+  .contact::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(80% 60% at 100% 0%, rgba(201,154,62,.15), transparent 60%);
+  }
+  .contact .container{position:relative;}
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;margin-top:60px;align-items:center;}
+  .phone-big{font-family:'Fraunces',serif;font-size:clamp(2rem,4.2vw,3rem);color:var(--gold-soft);direction:ltr;display:inline-block;margin:14px 0 24px;}
+  .contact-list{list-style:none;display:flex;flex-direction:column;gap:20px;}
+  .contact-list li{display:flex;align-items:center;gap:14px;color:var(--mint);font-size:.98rem;}
+  .contact-list .ic{
+    width:38px;height:38px;border-radius:10px;background:var(--bg-dark-2);
+    display:flex;align-items:center;justify-content:center;color:var(--gold-soft);flex-shrink:0;
+  }
+  .contact-card{
+    background:var(--bg-dark-2);border-radius:var(--radius);padding:36px;
+    border:1px solid rgba(255,255,255,.07);
+  }
+  .contact-card h3{margin-bottom:10px;font-size:1.2rem;}
+  .contact-card p{color:var(--mint);font-size:.92rem;margin-bottom:26px;}
+
+  footer{background:var(--charcoal);color:var(--mint);padding:34px 0;text-align:center;font-size:.85rem;}
+  footer a{color:var(--gold-soft);}
+
+  /* floating call button */
+  .float-call{
+    position:fixed;bottom:22px;left:22px;z-index:90;
+    background:var(--gold);color:var(--bg-dark);
+    width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 0 rgba(201,154,62,.4);}
+    50%{box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 12px rgba(201,154,62,0);}
+  }
+
+  @media (max-width:860px){
+    nav ul{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg-dark);
+      flex-direction:column;justify-content:center;align-items:center;gap:36px;
+      transform:translateY(-100%);transition:transform .4s ease;font-size:1.2rem;}
+    nav ul.open{transform:translateY(0);}
+    .menu-toggle{display:block;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;gap:36px;}
+    .benefit-grid{grid-template-columns:1fr 1fr;}
+    .benefit-grid .card:nth-child(2),.benefit-grid .card:nth-child(4){transform:none;}
+    .steps{grid-template-columns:1fr 1fr;gap:36px 0;}
+    .steps::before{display:none;}
+  }
+  @media (max-width:560px){
+    .benefit-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+  }
+</style>
 </head>
 <body>
 
-<header>
-  <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/4/49/Iran_insurance_logo.svg" />
-  <h1>نمایندگی بیمه ایران – مسفروش</h1>
+<header id="siteHeader">
+  <div class="container">
+    <div class="brand">
+      <span class="brand-mark">بی</span>
+      نمایندگی بیمه ایران — مسفروش
+    </div>
+    <nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="باز کردن منو">☰</button>
+      <ul id="navList">
+        <li><a href="#about" class="nav-link">درباره ما</a></li>
+        <li><a href="#benefits" class="nav-link">مزایا</a></li>
+        <li><a href="#process" class="nav-link">روند صدور</a></li>
+        <li><a href="#faq" class="nav-link">سوالات</a></li>
+        <li><a href="#contact" class="nav-cta nav-link">تماس بگیرید</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<div class="container">
-  <h2>مشاوره حضوری بیمه عمر</h2>
-  <p>با اطمینان کامل بیمه عمر ایران را با مشاوره تخصصی و حضوری دریافت کنید. ما راهنما و همراه شما در انتخاب بهترین پوشش‌ها هستیم.</p>
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">نمایندگی رسمی بیمه ایران — کاشان</span>
+    <h1>آرامش امروز، <span>سرمایه‌ی</span> فردای شما</h1>
+    <p class="lead">مشاوره تخصصی بیمه عمر با تمرکز بر امنیت خانواده، سرمایه‌گذاری بلندمدت و آرامش خاطر — صدور و پیگیری کاملاً حضوری در دفتر نمایندگی.</p>
+    <div class="cta-row">
+      <a href="tel:09134727238" class="btn btn-primary">☎ تماس فوری</a>
+      <a href="#benefits" class="btn btn-ghost">مشاهده مزایای بیمه عمر</a>
+    </div>
 
-  <h2>تماس مستقیم</h2>
-  <p>شماره تماس: <strong>۰۹۱۳۴۷۲۷۲۳۸</strong></p>
-  <a class="btn" href="tel:09134727238">تماس فوری</a>
+    <div class="signature reveal in">
+      <svg viewBox="0 0 800 120" preserveAspectRatio="none">
+        <path d="M0,90 L90,90 L110,40 L130,100 L150,60 L170,90 L260,90 C 340,90 340,20 420,20 C 500,20 500,55 580,55 C 660,55 660,15 800,15" />
+        <circle cx="130" cy="100" r="4" fill="#C99A3E" style="animation-delay:1.4s"/>
+        <circle cx="420" cy="20" r="4" fill="#C99A3E" style="animation-delay:2s"/>
+        <circle cx="800" cy="15" r="5" fill="#C99A3E" style="animation-delay:2.5s"/>
+      </svg>
+      <div class="sig-labels">
+        <span>امروز</span>
+        <span>میان‌راه: پس‌انداز و پوشش</span>
+        <span>فردای تضمین‌شده</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <h2>مزایای بیمه عمر ایران</h2>
-  <ul>
-    <li>پوشش کامل سرمایه فوت</li>
-    <li>امکان دریافت وام بدون ضامن</li>
-    <li>پس‌انداز بلندمدت و مطمئن</li>
-    <li>پوشش بیماری‌های خاص</li>
-    <li>امکان افزایش سالانه سرمایه</li>
-  </ul>
+<section class="section about" id="about">
+  <div class="container">
+    <div class="section-tag">درباره نمایندگی</div>
+    <h2>مشاوره‌ای صادقانه، پیش از هر چیز</h2>
+    <p class="desc">بیمه عمر تصمیمی بلندمدت است؛ به همین دلیل هر پرونده با گفتگوی حضوری و بررسی دقیق نیاز شما آغاز می‌شود، نه یک فرم آنلاین.</p>
 
-  <h2>سوالات پرتکرار</h2>
-  <h3>آیا مشاوره رایگان است؟</h3>
-  <p>بله، مشاوره حضوری و تلفنی کاملاً رایگان می‌باشد.</p>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <h3>نمایندگی رسمی بیمه ایران</h3>
+        <p>صدور، تمدید و پیگیری بیمه‌نامه عمر زیر نظر مستقیم بیمه ایران، با پاسخگویی شفاف در تمام مراحل قرارداد.</p>
+        <div class="agent-row">
+          <div class="agent-avatar">م</div>
+          <div>
+            <div class="name">خانم مسرورش</div>
+            <div class="role">مشاور و نماینده رسمی بیمه عمر</div>
+          </div>
+        </div>
+      </div>
 
-  <h3>چطور قرارداد بیمه عمر صادر می‌شود؟</h3>
-  <p>پس از مشاوره، تمام مراحل به صورت حضوری انجام می‌شود.</p>
+      <div class="points">
+        <div class="point reveal">
+          <div class="point-icon">◆</div>
+          <div>
+            <h4>مشاوره پیش از قرارداد</h4>
+            <p>بررسی نیاز و توان مالی شما، پیش از پیشنهاد هر طرحی.</p>
+          </div>
+        </div>
+        <div class="point reveal">
+          <div class="point-icon">◆</div>
+          <div>
+            <h4>پیگیری حضوری</h4>
+            <p>هر مرحله از صدور تا دریافت خسارت، در دفتر نمایندگی پیگیری می‌شود.</p>
+          </div>
+        </div>
+        <div class="point reveal">
+          <div class="point-icon">◆</div>
+          <div>
+            <h4>شفافیت در اعداد</h4>
+            <p>محاسبه اندوخته، وام و سرمایه بازگشتی پیش از امضای قرارداد توضیح داده می‌شود.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <h3>آیا امکان پرداخت اقساطی هست؟</h3>
-  <p>بله، پرداخت ماهانه یا سالانه بسته به درخواست شما انجام می‌شود.</p>
+<section class="section benefits" id="benefits">
+  <div class="container">
+    <div class="section-tag">چرا بیمه عمر</div>
+    <h2>یک قرارداد، چند لایه محافظت</h2>
+    <p class="desc">بیمه عمر فقط پوشش فوت نیست؛ ترکیبی از سرمایه‌گذاری، پشتیبانی درمانی و آرامش خانواده در یک قرارداد.</p>
 
-</div>
+    <div class="benefit-grid">
+      <div class="card reveal">
+        <span class="num">01</span>
+        <h4>وام بدون ضامن</h4>
+        <p>برداشت وام از محل اندوخته بیمه‌نامه، بدون نیاز به ضامن یا وثیقه.</p>
+      </div>
+      <div class="card reveal">
+        <span class="num">02</span>
+        <h4>پوشش بیماری‌های خاص</h4>
+        <p>پشتیبانی مالی در برابر بیماری‌های خاص و از کارافتادگی.</p>
+      </div>
+      <div class="card reveal">
+        <span class="num">03</span>
+        <h4>سرمایه برای بازماندگان</h4>
+        <p>پرداخت سرمایه بیمه‌نامه به ذی‌نفعان در صورت فوت بیمه‌گذار.</p>
+      </div>
+      <div class="card reveal">
+        <span class="num">04</span>
+        <h4>سرمایه‌گذاری</h4>
+        <p>رشد تدریجی اندوخته در طول مدت قرارداد، همراه با سود مشارکت در منافع.</p>
+      </div>
+      <div class="card reveal">
+        <span class="num">05</span>
+        <h4>امنیت و آرامش</h4>
+        <p>اطمینان از تأمین آینده خانواده، در هر شرایطی که پیش بیاید.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section process" id="process">
+  <div class="container">
+    <div class="section-tag">مسیر همکاری</div>
+    <h2>از مشاوره تا صدور بیمه‌نامه</h2>
+    <p class="desc">یک مسیر ساده و شفاف، از اولین تماس تا دریافت بیمه‌نامه.</p>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">۱</div>
+        <h4>تماس اولیه</h4>
+        <p>هماهنگی وقت مشاوره حضوری یا تلفنی</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">۲</div>
+        <h4>بررسی نیاز</h4>
+        <p>تعیین طرح متناسب با سن و بودجه شما</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">۳</div>
+        <h4>صدور بیمه‌نامه</h4>
+        <p>تکمیل مدارک و صدور قرارداد در دفتر</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">۴</div>
+        <h4>پشتیبانی مستمر</h4>
+        <p>پیگیری سالانه و پاسخگویی در طول قرارداد</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <div class="container">
+    <div class="section-tag">سوالات پرتکرار</div>
+    <h2>پاسخ‌هایی که معمولاً می‌پرسید</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">بیمه عمر از چه سنی امکان‌پذیر است؟<span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">صدور اغلب پلن‌ها از بدو تولد تا ۱۱۰ سالگی امکان‌پذیر است؛ برای شرایط دقیق‌تر متناسب با سن شما در جلسه مشاوره توضیح داده می‌شود.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">آیا می‌توان مبلغ حق‌بیمه را تغییر داد؟<span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">بله؛ معمولاً امکان افزایش یا کاهش حق‌بیمه در طول مدت قرارداد با توافق وجود دارد.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">آیا امکان دریافت وام وجود دارد؟<span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">بله؛ میزان وام بستگی به اندوخته و مدت قرارداد دارد و شرایط دقیق آن در دفتر نمایندگی توضیح داده می‌شود.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">آیا مشاوره اولیه هزینه دارد؟<span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">خیر؛ جلسه مشاوره اولیه برای بررسی نیاز شما رایگان است.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-tag">تماس با ما</div>
+        <h2>وقت مشاوره بگیرید</h2>
+        <a href="tel:09134727238" class="phone-big">09134727238</a>
+        <ul class="contact-list">
+          <li><span class="ic">☎</span> ۰۹۱۳۴۷۲۷۲۳۸ — تماس یا واتس‌اپ</li>
+          <li><span class="ic">◎</span> اینستاگرام: BIMEIRANM@</li>
+          <li><span class="ic">⚑</span> کاشان — خیابان رجایی — پاساژ نجفی‌زاده</li>
+        </ul>
+      </div>
+      <div class="contact-card reveal">
+        <h3>آماده پاسخگویی هستیم</h3>
+        <p>برای دریافت مشاوره رایگان بیمه عمر، همین حالا تماس بگیرید یا از طریق اینستاگرام پیام دهید.</p>
+        <a href="tel:09134727238" class="btn btn-primary">تماس فوری</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
-  تمامی حقوق مربوط به نمایندگی بیمه ایران مسفروش می‌باشد.
+  <div class="container">
+    نمایندگی رسمی بیمه ایران — مسفروش · کاشان &nbsp;|&nbsp; <a href="https://instagram.com/BIMEIRANM" target="_blank" rel="noopener">اینستاگرام</a>
+  </div>
 </footer>
+
+<a href="tel:09134727238" class="float-call" aria-label="تماس فوری">☎</a>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navList = document.getElementById('navList');
+  menuToggle.addEventListener('click', () => navList.classList.toggle('open'));
+  document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => navList.classList.remove('open')));
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
 
 </body>
 </html>
